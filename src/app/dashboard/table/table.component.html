@@ -1,0 +1,42 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-12">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <button (click)="getDataUser()" class="btn btn-outline-light btn-lg px-5">Get Data User</button>
+                        <div fxLayout="column" fxLayoutGap="15px">
+                            <table fxFlex [dataSource]="userData" mat-table class="mat-elevation-z8">
+                              <tr mat-header-row *matHeaderRowDef="userDataColumn; sticky: true"></tr>
+                              <tr mat-row *matRowDef="let row; columns: userDataColumn"></tr>
+                              <ng-container matColumnDef="user">
+                                <th mat-header-cell *matHeaderCellDef style="width: 200px; text-align: center"> User </th>
+                                <td mat-cell *matCellDef="let element; let i = index" style="width: 200px; text-align: center" > {{ element["user"] }} </td>
+                              </ng-container>
+                          
+                              <ng-container matColumnDef="address">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center">  Address </th>
+                                <td mat-cell *matCellDef="let element; let i = index" style="width: 200px; text-align: center" > {{ element["address"] }} </td>
+                              </ng-container>
+                          
+                              <ng-container matColumnDef="email">
+                                <th mat-header-cell *matHeaderCellDef style="width: 200px; text-align: center" > Email </th>
+                                <td mat-cell *matCellDef="let element; let i = index"  style="width: 200px; text-align: center" > {{ element["email"] }}  </td>
+                              </ng-container>
+                          
+                              <ng-container matColumnDef="action">
+                                <th mat-header-cell *matHeaderCellDef style="width: 200px; text-align: center" > Action </th>
+                                <td mat-cell  *matCellDef="let element; let i = index" style="width: 200px; text-align: center" >
+                                  <button mat-icon-button  matTooltip="DELETE" matTooltipPosition="above" color="primary" (click)="deleteUser(element, i)" >
+                                    <mat-icon>delete</mat-icon>
+                                  </button>
+                                </td>
+                              </ng-container>
+                            </table>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
